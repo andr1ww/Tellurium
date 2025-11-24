@@ -157,8 +157,9 @@ void Tellurium::Hooks::Init()
             constexpr static auto PushWidget1 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 30 48 8B E9 49 8B D9 48 8D 0D ? ? ? ? 49 8B F8 48 8B F2 E8 ? ? ? ? 4C 8B CF 48 89 5C 24 ? 4C 8B C6 48 8B D5 48 8B 48 78">();
             constexpr static auto PushWidget2 = Tellurium::Patchfinder::Pattern<"48 8B C4 4C 89 40 18 48 89 50 10 48 89 48 08 55 53 56 57 41 54 41 55 41 56 41 57 48 8D 68 B8 48 81 EC ? ? ? ? 65 48 8B 04 25">();
             constexpr static auto PushWidget3 = Tellurium::Patchfinder::Pattern<"48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 55 41 56 41 57 48 8D 68 A1 48 81 EC ? ? ? ? 65 48 8B 04 25 ? ? ? ? 48 8B F9 B9 ? ? ? ?">();
+            constexpr static auto PushWidget4 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 48 89 74 24 ? 55 57 41 54 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 49 8B D9 49 8B F8 4C 8B E2 4C 8B F1">();
 
-            if (PushWidget1.Scan() || PushWidget2.Scan() || PushWidget3.Scan())
+            if (PushWidget1.Scan() || PushWidget2.Scan() || PushWidget3.Scan() || PushWidget4.Scan())
             {
                 constexpr static auto RequestExitWithStatus1 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 57 48 83 EC 40 41 B9 ? ? ? ? 0F B6 F9 44 38 0D ? ? ? ? 0F B6 DA 72 24 89 5C 24 30 48 8D 05 ? ? ? ? 89 7C 24 28 4C 8D 05 ? ? ? ? 33 D2 48 89 44 24 ? 33 C9 E8 ? ? ? ?">();
                 constexpr static auto RequestExitWithStatus2 = Tellurium::Patchfinder::Pattern<"48 8B C4 48 89 58 18 88 50 10 88 48 08 57 48 83 EC 30">();
