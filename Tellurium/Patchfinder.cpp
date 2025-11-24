@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Patchfinder.h"
+#include <xmmintrin.h>
 
 IMAGE_SECTION_HEADER* Tellurium::PE::GetSection(const char* name)
 {
