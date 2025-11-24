@@ -19,4 +19,4 @@ Go to ``Tellurium/Options.h``, and change ``UrlSet`` to All.
 Go to ``Tellurium/Options.h``, and change ``Console`` to true.
 
 # Other
-If you use Tellurium for a project, please credit me.
+If you use Tellurium for a public project, please credit me.
