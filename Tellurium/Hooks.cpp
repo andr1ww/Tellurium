@@ -174,11 +174,12 @@ void Tellurium::Hooks::Init()
                     RequestExitWithStatus = RequestExitWithStatus3.Scan();
 
                 constexpr static auto ShowAppEnvironmentSecurityMessage1 = Tellurium::Patchfinder::Pattern<"4C 8B DC 55 49 8D AB ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 89 73 F0 49 89 7B E8 48 8B F9 4D 89 63 E0 4D 8B E0 4D 89 6B D8">();
-                constexpr static auto ShowAppEnvironmentSecurityMessage2 = Tellurium::Patchfinder::Pattern<"40 55 53 56 57 41 54 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? ? 0F B6 ?">();
+                constexpr static auto ShowAppEnvironmentSecurityMessage2 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 41 0F B6 D8 48 89 55 ? 88 5C 24 ?">();
                 constexpr static auto ShowAppEnvironmentSecurityMessage3 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 80 B9 ? ? ? ? ? 48 8B DA 48 8B F1">();
                 constexpr static auto ShowAppEnvironmentSecurityMessage4 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? ? 0F B6 ? 44 88 44 24 ?">();
                 constexpr static auto ShowAppEnvironmentSecurityMessage5 = Tellurium::Patchfinder::Pattern<"48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 45 0F B6 F8">();
-                constexpr static auto ShowAppEnvironmentSecurityMessage6 = Tellurium::Patchfinder::Pattern<"4C 8B DC 55 49 8D AB ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ?">();
+                constexpr static auto ShowAppEnvironmentSecurityMessage6 = Tellurium::Patchfinder::Pattern<"40 55 53 56 57 41 54 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? ? 0F B6 ?">();
+                constexpr static auto ShowAppEnvironmentSecurityMessage7 = Tellurium::Patchfinder::Pattern<"4C 8B DC 55 49 8D AB ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ?">();
 
                 auto ShowAppEnvironmentSecurityMessage = ShowAppEnvironmentSecurityMessage1.Scan();
 
@@ -196,6 +197,9 @@ void Tellurium::Hooks::Init()
 
                 if (!ShowAppEnvironmentSecurityMessage)
                     ShowAppEnvironmentSecurityMessage = ShowAppEnvironmentSecurityMessage6.Scan();
+
+                if (!ShowAppEnvironmentSecurityMessage)
+                    ShowAppEnvironmentSecurityMessage = ShowAppEnvironmentSecurityMessage7.Scan();
 
                 if (RequestExitWithStatus)
                 {
